@@ -49,24 +49,14 @@ let isBlowing = false;
         isFlameOff = !isFlameOff;
     });
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const audioElement = document.getElementById('background-music');
-        
-        // Autoplay audio when the page is loaded
-        audioElement.play().catch((error) => {
-            console.log('Audio play was prevented:', error);
-        });
-    });
-
     function closeWindow() {
         // Menutup jendela atau tab saat tombol diklik
         window.close();
     }
 
-    const audio = document.querySelector('audio');
+    const audio = document.getElementById('birthdaySong');
     const body = document.body;
     
-        
     audio.addEventListener('play', () => {
         body.classList.add('play-music');
     });
@@ -74,8 +64,17 @@ let isBlowing = false;
     audio.addEventListener('pause', () => {
         body.classList.remove('play-music');
     });
-
+    
     document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById('birthdaySong');
+        
+        // Pastikan audio dimulai secara otomatis jika memungkinkan
+        audio.play().catch(error => {
+            // Tangani kasus di mana autoplay tidak diizinkan
+            console.log("Autoplay tidak diizinkan, coba dengan interaksi pengguna");
+        });
+    
+        // Menampilkan SweetAlert2
         Swal.fire({
             title: 'Cara Tiup Lilin',
             text: 'Tiup lilinnya lewat mic, tiup di mic sekenceng mungkin sampe lilinnya mati (alternatif lain lilinnya dipencet)',

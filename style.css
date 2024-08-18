@@ -222,17 +222,8 @@ h3 {
 }
 }
 
-@keyframes fadeIn {
-    from {
-    opacity: 0;
-    }
-    to {
-    opacity: 1;
-    }
-}
-
 audio {
-    display: none;
+    display: block;
 }
 
 body.play-music {
