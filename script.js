@@ -54,34 +54,38 @@ let isBlowing = false;
         window.close();
     }
 
-    const audio = document.getElementById('birthdaySong');
-    const body = document.body;
-    
-    audio.addEventListener('play', () => {
-        body.classList.add('play-music');
-    });
-    
-    audio.addEventListener('pause', () => {
-        body.classList.remove('play-music');
-    });
-    
     document.addEventListener("DOMContentLoaded", function() {
         const audio = document.getElementById('birthdaySong');
         
-        // Pastikan audio dimulai secara otomatis jika memungkinkan
+        // Try to autoplay the audio
         audio.play().catch(error => {
-            // Tangani kasus di mana autoplay tidak diizinkan
-            console.log("Autoplay tidak diizinkan, coba dengan interaksi pengguna");
+            // If autoplay is blocked, show an alert prompting user interaction
+            Swal.fire({
+                title: 'Play Audio',
+                text: 'Click below to enable the birthday song!',
+                icon: 'info',
+                confirmButtonText: 'Play',
+                customClass: {
+                    container: 'swal-container-netflix',
+                    popup: 'swal-popup-netflix',
+                    title: 'swal-title-netflix',
+                    text: 'swal-text-netflix',
+                    confirmButton: 'swal-confirm-button-netflix'
+                }
+            }).then(() => {
+                // Play the audio after user clicks the button
+                audio.play();
+            });
         });
-    
-        // Menampilkan SweetAlert2
+
+        // Show the SweetAlert2 pop-up for other instructions
         Swal.fire({
             title: 'Cara Tiup Lilin',
             text: 'Tiup lilinnya lewat mic, tiup di mic sekenceng mungkin sampe lilinnya mati (alternatif lain lilinnya dipencet)',
             imageUrl: 'wawa.jpg', // Ganti dengan URL gambar yang sesuai
-            imageWidth: 150, // Lebar gambar
-            imageHeight: 150, // Tinggi gambar
-            imageAlt: 'Wawa', // Alt text untuk gambar
+            imageWidth: 150,
+            imageHeight: 150,
+            imageAlt: 'Wawa',
             confirmButtonText: 'Ayo Lihat Kuenya',
             customClass: {
                 container: 'swal-container-netflix',
