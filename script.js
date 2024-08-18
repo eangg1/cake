@@ -56,37 +56,14 @@ let isBlowing = false;
 
     document.addEventListener("DOMContentLoaded", function() {
         const audio = document.getElementById('birthdaySong');
-        
-        // Try to autoplay the audio
-        audio.play().catch(error => {
-            // If autoplay is blocked, show an alert prompting user interaction
-            Swal.fire({
-                title: 'Play Audio',
-                text: 'Click below to enable the birthday song!',
-                icon: 'info',
-                confirmButtonText: 'Play',
-                customClass: {
-                    container: 'swal-container-netflix',
-                    popup: 'swal-popup-netflix',
-                    title: 'swal-title-netflix',
-                    text: 'swal-text-netflix',
-                    confirmButton: 'swal-confirm-button-netflix'
-                }
-            }).then(() => {
-                // Play the audio after user clicks the button
-                audio.play();
-            });
-        });
-
-        // Show the SweetAlert2 pop-up for other instructions
+    
+        // Pertama, minta izin kepada pengguna untuk memutar audio
         Swal.fire({
-            title: 'Cara Tiup Lilin',
-            text: 'Tiup lilinnya lewat mic, tiup di mic sekenceng mungkin sampe lilinnya mati (alternatif lain lilinnya dipencet)',
-            imageUrl: 'wawa.jpg', // Ganti dengan URL gambar yang sesuai
-            imageWidth: 150,
-            imageHeight: 150,
-            imageAlt: 'Wawa',
-            confirmButtonText: 'Ayo Lihat Kuenya',
+            title: 'Izinkan Audio',
+            text: 'klik "izinkan" untuk memutar lagu ulang tahun.',
+            icon: 'question',
+            confirmButtonText: 'izinkan',
+            allowOutsideClick: false, // Tidak memungkinkan untuk menutup pop-up dengan mengklik luar
             customClass: {
                 container: 'swal-container-netflix',
                 popup: 'swal-popup-netflix',
@@ -94,5 +71,49 @@ let isBlowing = false;
                 text: 'swal-text-netflix',
                 confirmButton: 'swal-confirm-button-netflix'
             }
+        }).then(() => {
+            // Coba memutar audio setelah izin diberikan
+            audio.play().catch(error => {
+                // Jika autoplay diblokir, tampilkan pop-up untuk meminta interaksi manual
+                Swal.fire({
+                    title: 'Audio Terblokir',
+                    text: 'Klik di bawah untuk memutar lagu ulang tahun!',
+                    icon: 'info',
+                    confirmButtonText: 'Mainkan',
+                    customClass: {
+                        container: 'swal-container-netflix',
+                        popup: 'swal-popup-netflix',
+                        title: 'swal-title-netflix',
+                        text: 'swal-text-netflix',
+                        confirmButton: 'swal-confirm-button-netflix'
+                    }
+                }).then(() => {
+                    // Putar audio setelah pengguna mengklik tombol
+                    audio.play();
+                });
+            });
+    
+            // Tampilkan instruksi meniup lilin setelah meminta izin
+            showCandleBlowingInstructions();
         });
+    
+        // Fungsi untuk menampilkan instruksi meniup lilin
+        function showCandleBlowingInstructions() {
+            Swal.fire({
+                title: 'cara tiup lilin',
+                text: 'tiup lilinnya lewat mic, tiup di mic sekenceng mungkin sampe lilinnya mati (alternatif lain lilinnya dipencet)',
+                imageUrl: 'wawa.jpg', // Ganti dengan URL gambar yang sesuai
+                imageWidth: 150,
+                imageHeight: 150,
+                imageAlt: 'Wawa',
+                confirmButtonText: 'ayo lihat kuenya',
+                customClass: {
+                    container: 'swal-container-netflix',
+                    popup: 'swal-popup-netflix',
+                    title: 'swal-title-netflix',
+                    text: 'swal-text-netflix',
+                    confirmButton: 'swal-confirm-button-netflix'
+                }
+            });
+        }
     });
