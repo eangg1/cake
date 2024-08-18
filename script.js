@@ -58,3 +58,7 @@ let isBlowing = false;
         });
     });
 
+    function closeWindow() {
+        // Menutup jendela atau tab saat tombol diklik
+        window.close();
+    }
