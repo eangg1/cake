@@ -62,3 +62,34 @@ let isBlowing = false;
         // Menutup jendela atau tab saat tombol diklik
         window.close();
     }
+
+    const audio = document.querySelector('audio');
+    const body = document.body;
+    
+        
+    audio.addEventListener('play', () => {
+        body.classList.add('play-music');
+    });
+    
+    audio.addEventListener('pause', () => {
+        body.classList.remove('play-music');
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            title: 'Cara Tiup Lilin',
+            text: 'Tiup lilinnya lewat mic, tiup di mic sekenceng mungkin sampe lilinnya mati (alternatif lain lilinnya dipencet)',
+            imageUrl: 'wawa.jpg', // Ganti dengan URL gambar yang sesuai
+            imageWidth: 150, // Lebar gambar
+            imageHeight: 150, // Tinggi gambar
+            imageAlt: 'Wawa', // Alt text untuk gambar
+            confirmButtonText: 'Ayo Lihat Kuenya',
+            customClass: {
+                container: 'swal-container-netflix',
+                popup: 'swal-popup-netflix',
+                title: 'swal-title-netflix',
+                text: 'swal-text-netflix',
+                confirmButton: 'swal-confirm-button-netflix'
+            }
+        });
+    });

@@ -230,3 +230,56 @@ h3 {
     opacity: 1;
     }
 }
+
+audio {
+    display: none;
+}
+
+body.play-music {
+    animation: fadeIn 2s ease-in-out;   
+}
+
+.swal2-image {
+    border-radius: 50%;
+    color: black;
+}
+
+.swal2-text2 {
+    opacity: 50%;
+    color:  #e50914;
+}
+
+.swal-container-netflix {
+    background-color: #000; /* Warna latar belakang hitam */
+}
+
+.swal-popup-netflix {
+    background-color: #141414; /* Warna latar belakang popup */
+    border-radius: 10px; /* Sudut membulat */
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.7); /* Bayangan */
+    color: #fff; /* Warna teks */
+    text-align: center; /* Teks di tengah */
+    width: 90%; /* Lebar popup */
+    max-width: 400px; /* Lebar maksimum */
+}
+
+.swal-title-netflix {
+    font-size: 20px; /* Ukuran font judul */
+    font-weight: bold; /* Font tebal */
+    margin-bottom: 10px; /* Jarak bawah */
+}
+
+.swal-text-netflix {
+    font-size: 16px; /* Ukuran font teks */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+.swal-confirm-button-netflix {
+    background-color: #e50914; /* Warna tombol Netflix */
+    color: #fff; /* Warna teks tombol */
+    border: none; /* Menghilangkan border */
+    border-radius: 5px; /* Sudut membulat tombol */
+    padding: 8px 16px; /* Padding tombol */
+    font-size: 14px; /* Ukuran font tombol */
+    font-weight: bold; /* Font tebal tombol */
+}
