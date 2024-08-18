@@ -49,15 +49,12 @@ let isBlowing = false;
         isFlameOff = !isFlameOff;
     });
 
-const audio = document.querySelector('audio');
-const body = document.body;
-  
-    
-audio.addEventListener('play', () => {
-    body.classList.add('play-music');
-});
-  
-audio.addEventListener('pause', () => {
-    body.classList.remove('play-music');
-});
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const audioElement = document.getElementById('background-music');
+        
+        // Autoplay audio when the page is loaded
+        audioElement.play().catch((error) => {
+            console.log('Audio play was prevented:', error);
+        });
+    });
 
