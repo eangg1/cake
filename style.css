@@ -17,6 +17,12 @@ body {
     text-align: center;
 }
 
+/* Gaya khusus untuk tampilan di HP */
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url('bg landing page hp.jpeg');
+    }
+}
 
 h1, h2 {
     font-weight: bold;
